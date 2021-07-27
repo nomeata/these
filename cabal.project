@@ -5,4 +5,18 @@ packages: semialign
 packages: monad-chronicle
 packages: these-tests
 
+packages: https://hackage.haskell.org/package/mtl-2.3/candidate/mtl-2.3.tar.gz
+allow-newer: lens:transformers
+allow-newer: lens:mtl
+allow-newer: kan-extensions:transformers
+allow-newer: kan-extensions:mtl
+allow-newer: adjunctions:mtl
+allow-newer: adjunctions:transformers
+allow-newer: free:mtl
+allow-newer: free:transformers
+allow-newer: exceptions:mtl
+allow-newer: exceptions:transformers
+allow-newer: optics-core:transformers
+allow-newer: lattices:transformers
+
 tests: true

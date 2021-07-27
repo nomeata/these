@@ -274,6 +274,21 @@ jobs:
           if [ $((GHCJSARITH || ! GHCJSARITH && HCNUMVER >= 80200)) -ne 0 ] ; then echo "package these-tests" >> cabal.project ; fi
           if [ $((GHCJSARITH || ! GHCJSARITH && HCNUMVER >= 80200)) -ne 0 ] ; then echo "    ghc-options: -Werror=missing-methods" >> cabal.project ; fi
           cat >> cabal.project <<EOF
+          packages:
+            https://hackage.haskell.org/package/mtl-2.3/candidate/mtl-2.3.tar.gz
+
+          allow-newer: lens:transformers
+          allow-newer: lens:mtl
+          allow-newer: kan-extensions:transformers
+          allow-newer: kan-extensions:mtl
+          allow-newer: adjunctions:mtl
+          allow-newer: adjunctions:transformers
+          allow-newer: free:mtl
+          allow-newer: free:transformers
+          allow-newer: exceptions:mtl
+          allow-newer: exceptions:transformers
+          allow-newer: optics-core:transformers
+          allow-newer: lattices:transformers
           EOF
           $HCPKG list --simple-output --names-only | perl -ne 'for (split /\s+/) { print "constraints: $_ installed\n" unless /^(monad-chronicle|semialign|these|these-lens|these-optics|these-tests)$/; }' >> cabal.project.local
           cat cabal.project
